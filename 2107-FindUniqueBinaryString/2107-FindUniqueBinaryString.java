@@ -1,0 +1,12 @@
+// Last updated: 7/31/2025, 5:29:50 PM
+class Solution {
+    static String ans ="";
+    public String findDifferentBinaryString(String[] nums) {
+        StringBuilder ans= new StringBuilder();                  
+        for(int i=0; i<nums.length; i++)  
+            ans.append(nums[i].charAt(i) == '0' ? '1' : '0');
+        return ans.toString();
+        
+
+    }
+}
