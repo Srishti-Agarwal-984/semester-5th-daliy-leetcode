@@ -1,0 +1,8 @@
+# Last updated: 7/31/2025, 5:35:14 PM
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        s.reverse() 
+        return s;   
