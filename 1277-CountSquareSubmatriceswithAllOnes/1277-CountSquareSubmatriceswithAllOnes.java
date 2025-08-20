@@ -1,4 +1,4 @@
-// Last updated: 8/17/2025, 9:59:17 AM
+// Last updated: 8/20/2025, 6:20:27 AM
 class Solution {
     public int countSquares(int[][] matrix) {
         int[][] dp = new int[matrix.length][matrix[0].length];
