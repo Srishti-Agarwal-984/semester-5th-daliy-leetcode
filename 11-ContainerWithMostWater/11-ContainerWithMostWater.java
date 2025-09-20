@@ -1,4 +1,4 @@
-// Last updated: 7/31/2025, 5:38:45 PM
+// Last updated: 9/21/2025, 5:15:09 AM
 class Solution {
     public int maxArea(int[] height) {
         int i=0, k=height.length-1;
