@@ -1,57 +1,41 @@
-// Last updated: 7/31/2025, 5:36:19 PM
+// Last updated: 9/23/2025, 6:15:41 AM
 class Solution {
     public int compareVersion(String version1, String version2) {
-        String s="";
-        List<Integer> ar = new ArrayList<>();
-        for(int i=0; i<version1.length(); i++){
-            if(version1.charAt(i)=='.'){
-                ar.add(Integer.parseInt(s));
-                //System.out.println(ar.get(ar.size()-1));
-                s="";
-            }
-            else{
-                s=s+version1.charAt(i);
-            }
-        }
-        ar.add(Integer.parseInt(s));
-        //System.out.println(ar.get(ar.size()-1));
-        s="";
-        List<Integer> ar1 = new ArrayList<>();
-        for(int i=0; i<version2.length(); i++){
-            if(version2.charAt(i)=='.'){
-                ar1.add(Integer.parseInt(s));
-                s="";
-            }
-            else{
-                s=s+version2.charAt(i);
-            }
-        }
-        ar1.add(Integer.parseInt(s));
-        int u=0, m=0;
-        int o= ar.size(), l= ar1.size();
-        while(u<o && m<l){
-            if(ar.get(u)>ar1.get(m)){
+        String[] v1 = version1.split("\\.");
+        String[] v2 = version2.split("\\.");
+        int i=0 , j=0;
+        while(i<v1.length && j<v2.length){
+            //System.out.println("LK");
+            int a = Integer.parseInt(v1[i]);
+            int b= Integer.parseInt(v2[j]);
+            if(a>b){
                 return 1;
             }
-            if(ar.get(u)<ar1.get(m)){
+            else if(a<b){
                 return -1;
             }
-            u++;
-            m++;
+            i++;
+            j++;
         }
-        while(u<o){
-            if(ar.get(u)>0){
+        while(i<v1.length){
+            int a = Integer.parseInt(v1[i]);
+            //int b= Integer.parseInt(v2[j]);
+            if(a>0){
                 return 1;
             }
-            u++;
+    
+            
+            i++;
         }
-        while(m<l){
-            if(ar1.get(m)>0){
+        while(j<v2.length){
+            int b= Integer.parseInt(v2[j]);
+            if(b>0){
                 return -1;
-            }
-            m++;
+            }  
+            j++;
         }
         return 0;
+
         
     }
 }
