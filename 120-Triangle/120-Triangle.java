@@ -1,4 +1,4 @@
-// Last updated: 7/31/2025, 5:36:51 PM
+// Last updated: 9/25/2025, 7:16:43 PM
 class Solution {
     public int minimumTotal(List<List<Integer>> t) {
         int[][] dp = new int[t.size()][t.get(t.size()-1).size()];
