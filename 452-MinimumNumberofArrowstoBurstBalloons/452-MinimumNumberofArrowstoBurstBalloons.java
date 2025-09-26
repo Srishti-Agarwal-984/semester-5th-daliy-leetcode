@@ -1,4 +1,4 @@
-// Last updated: 9/26/2025, 7:49:19 PM
+// Last updated: 9/26/2025, 7:49:34 PM
 class Solution {
     public int findMinArrowShots(int[][] points) {
         if(points.length==2 && points[0][0]==-2147483646){
