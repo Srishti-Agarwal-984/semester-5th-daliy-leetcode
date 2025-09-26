@@ -1,4 +1,4 @@
-// Last updated: 9/26/2025, 6:18:47 AM
+// Last updated: 9/26/2025, 6:24:38 AM
 class Solution {
     public int triangleNumber(int[] nums) {
         int ans=0;
@@ -9,11 +9,11 @@ class Solution {
                 int b= nums[j];
                 for(int k=j+1; k<nums.length; k++){
                     int c= nums[k];
-                    if(a+b<=c){
-                        break;
-                    }
-                    if(a+b>c && a+c>b && b+c>a){
+                    if(a+b>c){
                         ans++;
+                    }
+                    else{
+                        break;
                     }
                 }
             }
