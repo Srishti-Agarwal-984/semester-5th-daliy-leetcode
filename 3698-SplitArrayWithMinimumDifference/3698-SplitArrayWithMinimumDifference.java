@@ -1,4 +1,4 @@
-// Last updated: 9/28/2025, 10:12:26 AM
+// Last updated: 9/28/2025, 10:14:51 AM
 class Solution {
     public long splitArray(int[] nums) {
         int si=0;
