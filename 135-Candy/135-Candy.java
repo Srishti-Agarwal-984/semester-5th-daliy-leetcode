@@ -1,33 +1,30 @@
-// Last updated: 7/31/2025, 5:36:40 PM
+// Last updated: 10/1/2025, 5:28:01 PM
 class Solution {
-    public int candy(int[] r) {
-        int n = r.length;
-        int idx =1;
-        int ans=1;
-        while(idx<n){
-            if(r[idx]==r[idx-1]){
-                ans++;
-                idx++;
-                continue;
+    public int candy(int[] ratings) {
+        int n = ratings.length;
+        int[] pre = new int[n];
+        int[] suff = new int[n];
+        pre[0] = 1;
+        suff[n-1] = 1;
+        for(int i = 1; i<n; i++){
+            if(ratings[i] > ratings[i-1]){
+                pre[i] = pre[i-1]+1;
             }
-            int up=1;
-            while(idx<n && r[idx]>r[idx-1]){
-                up++;
-                ans=ans+up;
-                
-                idx++;
+            else{
+                pre[i] = 1;
             }
-            int down=1;
-            while(idx<n && r[idx]<r[idx-1]){
-                
-                ans=ans+down;
-                down++;
-                idx++;
+        }
+        for(int i = n-2; i>=0; i--){
+            if(ratings[i] > ratings[i+1]){
+                suff[i] = suff[i+1]+1;
             }
-            if(down>up){
-                ans= ans + down - up;
+            else{
+                suff[i] = 1;
             }
-
+        }
+        int ans = 0;
+        for(int i = 0; i<n; i++){
+            ans += Math.max(pre[i],suff[i]);
         }
         return ans;
 
