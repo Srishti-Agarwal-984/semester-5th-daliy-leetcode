@@ -1,4 +1,4 @@
-// Last updated: 10/4/2025, 9:25:26 PM
+// Last updated: 10/4/2025, 9:25:33 PM
 class Solution {
     public int maximumTastiness(int[] price, int k) {
         Arrays.sort(price);
