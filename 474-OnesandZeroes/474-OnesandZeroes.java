@@ -1,13 +1,9 @@
-// Last updated: 10/6/2025, 11:58:01 PM
+// Last updated: 10/6/2025, 11:59:41 PM
 class Solution { 
     class demo{
-        int l=0;
         int oc=0;
         int zc=0;
-        String s="";
-        public  demo(int l,String s,int oc, int zc){
-            this.l=l;
-            this.s = s;
+        public  demo(int oc, int zc){
             this.oc=oc;
             this.zc=zc;
         }
@@ -15,7 +11,7 @@ class Solution {
     public int findMaxForm(String[] strs, int m, int n) {
         demo[] arr = new demo[strs.length];
         for(int i=0; i<strs.length; i++){
-            demo p=new demo(0,"",0,0);
+            demo p=new demo(0,0);
             int c=0;
             int si=0;
             while(si<strs[i].length()){
@@ -24,8 +20,6 @@ class Solution {
                 }
                 si++;
             }
-            p.l=strs[i].length();
-            p.s = strs[i];
             p.oc=strs[i].length()-c;
             p.zc=c;
             arr[i]=p;
