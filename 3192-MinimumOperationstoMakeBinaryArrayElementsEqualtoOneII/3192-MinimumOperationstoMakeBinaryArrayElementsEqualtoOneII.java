@@ -1,4 +1,4 @@
-// Last updated: 10/7/2025, 11:50:50 AM
+// Last updated: 10/7/2025, 11:51:02 AM
 class Solution {
     public int minOperations(int[] nums) {
         int op=0;
@@ -20,7 +20,7 @@ class Solution {
                 }
             }
             dp[i]+=dp[i-1];
-            dp[i]=dp[i]%2;
+            //dp[i]=dp[i]%2;
         }
         return op;
     }
