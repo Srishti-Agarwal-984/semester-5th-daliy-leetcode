@@ -1,4 +1,4 @@
-// Last updated: 10/16/2025, 11:04:24 PM
+// Last updated: 10/16/2025, 11:04:36 PM
 class Solution {
     public int findSmallestInteger(int[] nums, int value) {
         HashMap<Integer,Integer> map = new HashMap<>();
@@ -10,7 +10,7 @@ class Solution {
 
                 a=(a+value-1)/value;
                 el=a*value+el; 
-                System.out.println(el); 
+                //System.out.println(el); 
             }
             map.put(el%value, map.getOrDefault(el%value,0)+1);
             
