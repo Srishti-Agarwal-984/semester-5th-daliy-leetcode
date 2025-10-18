@@ -1,21 +1,23 @@
-// Last updated: 10/18/2025, 6:27:04 PM
+// Last updated: 10/18/2025, 6:29:53 PM
 class Solution {
     public int maxDistinctElements(int[] nums, int k) {
         Arrays.sort(nums);
-        Stack<Integer> st=new Stack<>();
-        st.add(nums[0]-k);
+        int prev=nums[0]-k;
+        int cn=1;
         for(int i=1;i<nums.length; i++){
             int a=nums[i]-k;
             int b=nums[i]+k;
-            if(st.peek()<a){
-                st.push(a);
+            if(prev<a){
+                prev=a;
+                cn++;
             }
             else{
-                if(st.peek()<b && st.peek()>=a){
-                    st.add(st.peek()+1);
+                if(prev<b && prev>=a){
+                    prev=prev+1;
+                    cn++;
                 }
             }
         }
-        return st.size();
+        return cn;
     }
 }
