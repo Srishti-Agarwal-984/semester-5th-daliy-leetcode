@@ -1,4 +1,4 @@
-// Last updated: 10/20/2025, 12:17:21 AM
+// Last updated: 10/20/2025, 12:18:46 AM
 class Solution {
     public int countDistinctIntegers(int[] nums) {
         HashSet<Integer> s=new HashSet<>();
@@ -7,9 +7,13 @@ class Solution {
         }
         int i=0;
         for(int el: nums){
-            StringBuilder s1= new StringBuilder(String.valueOf(el));
-            s1.reverse(); 
-            s.add(Integer.parseInt(s1.toString()));
+            int a=0;
+            while(el>0){
+                a=a*10+el%10;
+                el=el/10;
+            }
+            
+            s.add(a);
         }
         return s.size();
     }
