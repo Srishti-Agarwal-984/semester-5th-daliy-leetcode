@@ -1,4 +1,4 @@
-// Last updated: 10/26/2025, 1:09:13 AM
+// Last updated: 10/27/2025, 10:41:41 PM
 class Solution {
     public int totalMoney(int n) {
         int ans = 0;
