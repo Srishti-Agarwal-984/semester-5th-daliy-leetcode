@@ -1,17 +1,30 @@
-// Last updated: 11/6/2025, 6:07:56 AM
+// Last updated: 11/6/2025, 6:09:55 AM
 class Solution {
     public boolean winnerSquareGame(int n) {
-        boolean[] dp = new boolean[n + 1];
-
-        for (int i = 1; i <= n; i++) {
-            for (int k = 1; k * k <= i; k++) {
-                // If by taking k*k we force opponent into losing state, we win
-                if (dp[i - k * k] == false) {
-                    dp[i] = true;
-                    break; // No need to check further
-                }
-            }
+        int[] dp = new int[n+1];
+        Arrays.fill(dp,-1);
+        
+        return winnerSquareGame1(n,dp);
+    }
+    public boolean winnerSquareGame1(int n,int[] dp) {
+        if(n==0){
+            return false;
         }
-        return dp[n];
+        if(dp[n]!=-1){
+            return dp[n]==0?false:true;
+        }
+        boolean ans=false;
+        int i=1;
+        while((i*i)<=n){
+            boolean u=winnerSquareGame1(n-(i*i),dp);
+            if(u==false){
+                ans=true;
+                dp[n]=1;
+                return ans;
+            }
+            i++;
+        }
+        dp[n]=ans?1:0;
+        return ans;
     }
 }
