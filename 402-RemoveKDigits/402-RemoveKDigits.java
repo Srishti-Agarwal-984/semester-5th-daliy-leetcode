@@ -1,38 +1,37 @@
-// Last updated: 7/31/2025, 5:34:42 PM
+// Last updated: 11/13/2025, 11:58:19 AM
 import java.util.*;
 class Solution {
     public String removeKdigits(String num, int k) {
-        if(k==num.length()){
-            return "0";
-        }
-        Stack<Integer> ar = new Stack<>();
-        ar.push(num.charAt(0)-'0');
-        for(int i=1; i<num.length(); i++){
-            int p= num.charAt(i)-'0';
-            while(!ar.isEmpty() && p<ar.peek() && k>0){
-                ar.pop();
+        Stack<Character> stack = new Stack<>();
+        
+        for (char digit : num.toCharArray()) {
+            while (!stack.isEmpty() && k > 0 && stack.peek() > digit) {
+                stack.pop();
                 k--;
             }
-            ar.push(p);
+            stack.push(digit);
         }
-        while(k!=0){
-            ar.pop();
+        
+        // Remove remaining k digits from the end of the stack
+        while (k > 0 && !stack.isEmpty()) {
+            stack.pop();
             k--;
         }
-        String ans="";
-        while(!ar.isEmpty()){
-            ans=String.valueOf(ar.pop())+ans;
+        
+        // Construct the resulting string from the stack
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
         }
-        if(ans.length()==0){
-            return "0";
+        sb.reverse(); // Reverse to get the correct order
+        
+        // Remove leading zeros
+        while (sb.length() > 0 && sb.charAt(0) == '0') {
+            sb.deleteCharAt(0);
         }
-        while(ans.length()!=0 && ans.charAt(0)=='0'){
-            ans=ans.substring(1);
-        }
-        if(ans.length()==0){
-            return "0";
-        }
-        return ans;
+        
+        // Handle edge case where result might be empty
+        return sb.length() > 0 ? sb.toString() : "0";
 
         
         
