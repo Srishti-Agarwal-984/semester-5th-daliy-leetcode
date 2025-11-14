@@ -1,14 +1,23 @@
-// Last updated: 11/14/2025, 7:59:24 AM
+// Last updated: 11/14/2025, 8:14:22 AM
 class Solution {
-    public int[][] rangeAddQueries(int n, int[][] queries) {
-        int[][] arr = new int[n][n];
-        for(int i=0; i<queries.length; i++){
-            for(int j=queries[i][0]; j<=queries[i][2]; j++){
-                for(int k=queries[i][1]; k<=queries[i][3]; k++){
-                    arr[j][k]+=1;
-                }
+    public int[][] rangeAddQueries(int n, int[][] Q) {
+        int[][] res = new int[n][n];
+        for (var q : Q) {
+            int r0 = q[0], c0 = q[1], r1 = q[2]+1, c1 = q[3]+1;
+            res[r0][c0]++;
+            if (c1 < n) res[r0][c1]--;
+            if (r1 < n) {
+                res[r1][c0]--;
+                if (c1 < n) res[r1][c1]++;
             }
         }
-        return arr;
+
+        for (int i = 0; i < n; i++) for (int j = 1; j < n; j++)
+            res[i][j] += res[i][j-1];
+
+        for (int i = 1; i < n; i++) for (int j = 0; j < n; j++)
+            res[i][j] += res[i-1][j];
+
+        return res;
     }
 }
