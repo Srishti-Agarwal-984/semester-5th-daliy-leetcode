@@ -1,7 +1,7 @@
-// Last updated: 11/16/2025, 6:59:19 PM
+// Last updated: 11/16/2025, 6:59:42 PM
 class Solution {
     public List<String> topKFrequent(String[] words, int k) {
-        TreeMap<String, Integer> map = new TreeMap<>();
+        HashMap<String, Integer> map = new HashMap<>();
         for(String s: words){
             map.put(s, map.getOrDefault(s,0)+1);
         }
