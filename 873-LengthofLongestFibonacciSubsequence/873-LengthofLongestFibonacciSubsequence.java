@@ -1,11 +1,11 @@
-// Last updated: 11/18/2025, 5:02:11 PM
+// Last updated: 11/18/2025, 5:02:29 PM
 class Solution {
     //HashMap<Integer, HashSet>
     public int lenLongestFibSubseq(int[] arr) {
         int ans=2;
         for(int i=0; i<arr.length; i++){
             for(int j=i+1; j<arr.length; j++){
-                int r = helper(arr, i, j);
+                //int r = helper(arr, i, j);
                 ans=Math.max(ans,helper(arr, i, j)+2);
             }
         }
