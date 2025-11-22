@@ -1,0 +1,19 @@
+// Last updated: 11/22/2025, 8:26:58 PM
+class Solution {
+    public int totalWaviness(int num1, int num2) {
+        int c=0;
+        for(int i=num1; i<=num2; i++){
+            String s = String.valueOf(i);
+            for(int j=1; j<s.length()-1; j++){
+                if(s.charAt(j)>s.charAt(j+1) && s.charAt(j)>s.charAt(j-1)){
+                    c++;
+                }
+                if(s.charAt(j)<s.charAt(j+1) && s.charAt(j)<s.charAt(j-1)){
+                    c++;
+                }
+            }
+        }
+        return c;
+        
+    }
+}
