@@ -1,0 +1,12 @@
+// Last updated: 11/26/2025, 12:42:56 PM
+class Solution {
+    public int[] findArray(int[] pref) {
+        int[] ans = new int[pref.length];
+        ans[0]=pref[0];
+        for(int i=1; i<pref.length; i++){
+            ans[i]=pref[i-1]^pref[i];
+        }
+        return ans;
+        
+    }
+}
