@@ -1,4 +1,4 @@
-// Last updated: 11/26/2025, 12:42:56 PM
+// Last updated: 11/26/2025, 12:43:18 PM
 class Solution {
     public int[] findArray(int[] pref) {
         int[] ans = new int[pref.length];
