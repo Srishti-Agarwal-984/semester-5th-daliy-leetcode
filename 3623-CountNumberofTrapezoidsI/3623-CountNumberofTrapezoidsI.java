@@ -1,4 +1,4 @@
-// Last updated: 12/2/2025, 5:46:26 PM
+// Last updated: 12/2/2025, 5:47:00 PM
 1class Solution {
 2    int mod = 1000000007;
 3    public int countTrapezoids(int[][] points) {
@@ -25,24 +25,20 @@
 24                c++;
 25            }
 26        }
-27        if(li.size()==1){
-28            return 0;
-29        }
-30        p=0;
-31        long sum=0;
-32        for(int i=0; i<li.size(); i++){
-33            sum=(sum+li.get(i)%mod)%mod;
-34        }
-35
-36        for(int i=0; i<li.size()-1; i++){
-37            sum=(sum-li.get(i))%mod;
-38            long d = (li.get(i)*(sum%mod))%mod;
-39            p=(p+d%mod)%mod;
-40            
-41        }
-42
-43        return (int)p;
-44
-45        
-46    }
-47}
+27        p=0;
+28        long sum=0;
+29        for(int i=0; i<li.size(); i++){
+30            sum=(sum+li.get(i)%mod)%mod;
+31        }
+32        for(int i=0; i<li.size()-1; i++){
+33            sum=(sum-li.get(i))%mod;
+34            long d = (li.get(i)*(sum%mod))%mod;
+35            p=(p+d%mod)%mod;
+36            
+37        }
+38
+39        return (int)p;
+40
+41        
+42    }
+43}
