@@ -1,4 +1,4 @@
-// Last updated: 12/2/2025, 5:47:00 PM
+// Last updated: 12/2/2025, 5:48:11 PM
 1class Solution {
 2    int mod = 1000000007;
 3    public int countTrapezoids(int[][] points) {
@@ -16,29 +16,27 @@
 15        long p=1;
 16        int c=0;
 17        List<Long> li = new ArrayList<>();
-18
-19        for(int k: map.keySet()){
-20            int a = map.get(k).size();
-21            if(a>=2){
-22                long d = ((long)a*((a-1)%mod)%mod)/2;
-23                li.add(d);
-24                c++;
-25            }
-26        }
-27        p=0;
-28        long sum=0;
-29        for(int i=0; i<li.size(); i++){
-30            sum=(sum+li.get(i)%mod)%mod;
-31        }
-32        for(int i=0; i<li.size()-1; i++){
-33            sum=(sum-li.get(i))%mod;
-34            long d = (li.get(i)*(sum%mod))%mod;
-35            p=(p+d%mod)%mod;
-36            
-37        }
+18        long sum=0;
+19
+20        for(int k: map.keySet()){
+21            int a = map.get(k).size();
+22            if(a>=2){
+23                long d = ((long)a*((a-1)%mod)%mod)/2;
+24                sum=(sum+d)%mod;
+25                li.add(d);
+26                c++;
+27            }
+28        }
+29        p=0;
+30        for(int i=0; i<li.size()-1; i++){
+31            sum=(sum-li.get(i))%mod;
+32            long d = (li.get(i)*(sum%mod))%mod;
+33            p=(p+d%mod)%mod;
+34            
+35        }
+36
+37        return (int)p;
 38
-39        return (int)p;
-40
-41        
-42    }
-43}
+39        
+40    }
+41}
