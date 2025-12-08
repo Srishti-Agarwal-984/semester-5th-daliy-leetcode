@@ -1,4 +1,4 @@
-// Last updated: 12/8/2025, 6:45:02 AM
+// Last updated: 12/8/2025, 6:45:26 AM
 1class Solution {
 2    public int scheduleCourse(int[][] courses) {
 3        Arrays.sort(courses, (c1, c2) -> Integer.compare(c1[1], c2[1]));
@@ -17,12 +17,4 @@
 16        }
 17        return heap.size();
 18	}
-19    class Pair{
-20        int d;
-21        int lt;
-22        public Pair(int d, int lt){
-23            this.d=d;
-24            this.lt = lt;
-25        }
-26    }
-27}
+19}
