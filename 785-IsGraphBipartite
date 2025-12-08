@@ -1,0 +1,40 @@
+// Last updated: 12/8/2025, 5:50:14 PM
+1class Solution {
+2    public boolean isBipartite(int[][] graph) {
+3        HashMap<Integer, Integer> map = new HashMap<>();
+4        Queue<Pair> pq = new LinkedList<>();
+5        for(int i=0; i<graph.length; i++){
+6            if(map.containsKey(i)){
+7                continue;
+8            }
+9            pq.add(new Pair(i, 0));
+10            while(!pq.isEmpty()){
+11                Pair p = pq.poll();
+12                if(map.containsKey(p.vtx)){
+13                    int a = p.dist;
+14                    if(a!=map.get(p.vtx)){
+15                        return false;
+16                    }
+17                    continue;
+18                }
+19                map.put(p.vtx, p.dist);
+20                for(int nbrs: graph[p.vtx]){
+21                    if(!map.containsKey(nbrs)){
+22                        pq.add(new Pair(nbrs, p.dist+1));
+23                    }
+24                }
+25            }
+26        }
+27        return true;
+28
+29        
+30    }
+31    class Pair{
+32        int vtx;
+33        int dist;
+34        public Pair(int vtx, int dist){
+35            this.vtx=vtx;
+36            this.dist=dist;
+37        }
+38    }
+39}
