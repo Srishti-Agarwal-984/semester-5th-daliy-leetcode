@@ -1,4 +1,4 @@
-// Last updated: 12/9/2025, 11:45:45 PM
+// Last updated: 12/9/2025, 11:46:29 PM
 1class Solution {
 2    public int findCircleNum(int[][] isConnected) {
 3        HashMap<Integer , HashSet<Integer>> map = new HashMap<>();
@@ -6,21 +6,21 @@
 5            map.put(i, new HashSet<>());
 6        }
 7        for(int i=0; i<isConnected.length; i++){
-8            for(int j =0; j<isConnected[0].length; j++){
+8            for(int j =i+1; j<isConnected[0].length; j++){
 9                if(i==j){
 10                    continue;
 11                }
 12                if(isConnected[i][j] ==1){
 13                    map.get(i).add(j);
-14
-15                }
-16                
-17            }
-18        }
-19        int c=0;
-20        HashSet<Integer> visited  = new HashSet<>();
-21        for(int i=0; i<isConnected[0].length; i++){
-22            
+14                    map.get(j).add(i);
+15
+16                }
+17                
+18            }
+19        }
+20        int c=0;
+21        HashSet<Integer> visited  = new HashSet<>();
+22        for(int i=0; i<isConnected[0].length; i++){
 23            if(visited.contains(i)){
 24                continue;
 25            }
