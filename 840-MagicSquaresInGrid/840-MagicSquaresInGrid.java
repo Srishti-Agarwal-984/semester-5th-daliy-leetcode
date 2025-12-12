@@ -1,4 +1,4 @@
-// Last updated: 12/12/2025, 8:25:14 PM
+// Last updated: 12/12/2025, 8:26:05 PM
 1class Solution {
 2    public int numMagicSquaresInside(int[][] grid) {
 3        if(grid.length<3 || grid[0].length<3){
@@ -28,13 +28,12 @@
 27                int sum5 = grid[i+1][j+2]+grid[i][j+2]+grid[i+2][j+2];
 28                int d = grid[i][j]+grid[i+1][j+1]+grid[i+2][j+2];
 29                int d2 = grid[i][j+2]+grid[i+1][j+1]+grid[i+2][j];
-30                int as = sum1^sum2^sum3^sum4^sum5^sum6^d^d2;
-31                if(sum1==sum2 && sum2==sum3 && sum3==sum4 && sum4==sum5 && sum5==sum6 && d==sum6 && d==d2){
-32                    ans++;
-33                } 
-34            }
-35        }
-36        return ans;
-37        
-38    }
-39}
+30                if(sum1==sum2 && sum2==sum3 && sum3==sum4 && sum4==sum5 && sum5==sum6 && d==sum6 && d==d2){
+31                    ans++;
+32                } 
+33            }
+34        }
+35        return ans;
+36        
+37    }
+38}
