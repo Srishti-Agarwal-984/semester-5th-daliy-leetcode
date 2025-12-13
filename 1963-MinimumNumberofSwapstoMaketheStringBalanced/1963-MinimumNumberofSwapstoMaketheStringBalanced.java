@@ -1,4 +1,4 @@
-// Last updated: 12/13/2025, 6:47:54 AM
+// Last updated: 12/13/2025, 6:48:17 AM
 1class Solution {
 2    public int minSwaps(String s) {
 3        int cl=0;
@@ -15,9 +15,6 @@
 14                cl++;
 15            }
 16        }
-17        if(cl==1 || cl==2){
-18            return 1;
-19        }
-20        return (cl+1)/2;
-21    }
-22}
+17        return (cl+1)/2;
+18    }
+19}
