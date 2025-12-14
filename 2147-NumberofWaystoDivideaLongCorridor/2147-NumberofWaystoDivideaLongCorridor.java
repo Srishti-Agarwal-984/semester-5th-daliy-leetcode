@@ -1,4 +1,4 @@
-// Last updated: 12/15/2025, 12:24:11 AM
+// Last updated: 12/15/2025, 12:25:23 AM
 1class Solution {
 2    int mod = 1000000007;
 3    public int numberOfWays(String corridor) {
@@ -14,49 +14,25 @@
 13            if(c==2){
 14                r++;
 15            }
-16            
-17            if(c>=3){
-18                li.add(r);
-19                c=1;
-20                r=0;
-21            }
-22
-23        }
-24        if(c>=2){
-25            li.add(1);
-26        }
-27        long p=1;
-28        if(li.size()==0 || e%2!=0){
-29            return 0;
-30        }
-31        for(int p1 : li){
-32            p=(p*p1%mod)%mod;
-33        }
-34        return (int)p;
-35        
-36    }
-37    public long helper(String corridor, int si, long[] dp){
-38        if(si>=corridor.length()){
-39            return 1;
-40        }
-41        if(dp[si]!=-1){
-42            return dp[si];
-43        }
-44        long ans=0;
-45        int c=0;
-46        for(int i=si; i<corridor.length(); i++){
-47            if(corridor.charAt(i)=='S'){
-48                c++;
-49            }
-50            if(c==2){
-51                ans=(ans+helper(corridor, i+1, dp)%mod)%mod;
-52            }
-53            if(c>=3){
-54                break;
-55            }
-56
-57        }
-58        return dp[si]=ans;
-59
-60    }
-61}
+16            if(c>=3){
+17                li.add(r);
+18                c=1;
+19                r=0;
+20            }
+21
+22        }
+23        if(c>=2){
+24            li.add(1);
+25        }
+26        long p=1;
+27        if(li.size()==0 || e%2!=0){
+28            return 0;
+29        }
+30        for(int p1 : li){
+31            p=(p*p1%mod)%mod;
+32        }
+33        return (int)p;
+34        
+35    }
+36    
+37}
