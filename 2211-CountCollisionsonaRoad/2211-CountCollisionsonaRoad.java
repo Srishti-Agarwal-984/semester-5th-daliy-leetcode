@@ -1,4 +1,4 @@
-// Last updated: 12/5/2025, 1:28:23 PM
+// Last updated: 12/18/2025, 9:31:39 PM
 1class Solution {
 2    public int countCollisions(String directions) {
 3        int n = directions.length();
