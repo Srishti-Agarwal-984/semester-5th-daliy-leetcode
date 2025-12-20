@@ -1,4 +1,4 @@
-// Last updated: 12/20/2025, 7:53:53 AM
+// Last updated: 12/20/2025, 7:54:11 AM
 1class Solution {
 2    public boolean containsNearbyAlmostDuplicate(int[] nums, int indexDiff, int valueDiff) {
 3
@@ -22,7 +22,7 @@
 21
 22            int k = helper(ab, nums[i]);
 23
-24            ab.add(k, nums[i]);   // ✅ fixed here
+24            ab.add(k, nums[i]);
 25
 26            if (k > 0 && Math.abs(ab.get(k) - ab.get(k - 1)) <= valueDiff) {
 27                return true;
