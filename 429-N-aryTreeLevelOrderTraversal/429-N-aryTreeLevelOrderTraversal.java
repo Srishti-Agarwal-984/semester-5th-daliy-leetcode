@@ -1,4 +1,4 @@
-// Last updated: 12/23/2025, 1:17:36 AM
+// Last updated: 12/23/2025, 1:18:58 AM
 1/*
 2// Definition for a Node.
 3class Node {
@@ -32,26 +32,29 @@
 31            Pair p = q.poll();
 32            if(p.level==ans.size()){
 33                ans.add(new ArrayList<>());
-34                
-35            }
+34            }
+35        
 36            ans.get(p.level).add(p.ro.val);
-37            for(Node nbrs: p.ro.children){
-38                if(nbrs==null){
-39                    continue;
-40                }
-41                q.add(new Pair(nbrs, p.level+1));
-42            }
-43
-44        }
-45        return ans;
-46        
-47    }
-48    class Pair{
-49        Node ro;
-50         int level;
-51         public Pair(Node ro, int level){
-52            this.ro = ro;
-53            this.level = level;
-54         }
-55    }
-56}
+37            if(p.ro.children.size()==0){
+38                continue;
+39            }
+40            for(Node nbrs: p.ro.children){
+41                if(nbrs==null){
+42                    continue;
+43                }
+44                q.add(new Pair(nbrs, p.level+1));
+45            }
+46
+47        }
+48        return ans;
+49        
+50    }
+51    class Pair{
+52        Node ro;
+53         int level;
+54         public Pair(Node ro, int level){
+55            this.ro = ro;
+56            this.level = level;
+57         }
+58    }
+59}
