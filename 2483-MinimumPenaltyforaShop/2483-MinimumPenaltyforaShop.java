@@ -1,4 +1,4 @@
-// Last updated: 12/26/2025, 8:47:26 AM
+// Last updated: 12/26/2025, 8:47:46 AM
 1class Solution {
 2    public int bestClosingTime(String customers) {
 3        int[] p = new int[customers.length()+1];
@@ -26,7 +26,7 @@
 25            //     c++;
 26            // }
 27            int l = s[i]+p[i];
-28            System.out.println(l);
+28            //System.out.println(l);
 29            if(l<ans){
 30                min=i;
 31                ans = l;
