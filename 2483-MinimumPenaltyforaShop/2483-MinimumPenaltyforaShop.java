@@ -1,4 +1,4 @@
-// Last updated: 12/26/2025, 8:47:46 AM
+// Last updated: 12/26/2025, 8:48:17 AM
 1class Solution {
 2    public int bestClosingTime(String customers) {
 3        int[] p = new int[customers.length()+1];
@@ -32,12 +32,9 @@
 31                ans = l;
 32            }
 33        }
-34        if(min==0){
-35            return 0;
-36        }
-37        if(c==customers.length()){
-38            return c;
-39        }
-40        return min;
-41    }
-42}
+34        // if(min==0){
+35        //     return 0;
+36        // }
+37        return min;
+38    }
+39}
