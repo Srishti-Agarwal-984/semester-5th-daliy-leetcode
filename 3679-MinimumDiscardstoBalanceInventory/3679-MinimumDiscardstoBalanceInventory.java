@@ -1,4 +1,4 @@
-// Last updated: 12/27/2025, 5:30:53 PM
+// Last updated: 12/27/2025, 5:31:27 PM
 1class Solution {
 2    public int minArrivalsToDiscard(int[] arrivals, int w, int m) {
 3        if(w==1){
@@ -13,9 +13,9 @@
 12            if(map.get(arrivals[i])>m){
 13                map.put(arrivals[i], map.get(arrivals[i])-1);
 14                st.add(i);
-15                if(map.get(arrivals[i])==0){
-16                    map.remove(arrivals[i]);
-17                }
+15                // if(map.get(arrivals[i])==0){
+16                //     map.remove(arrivals[i]);
+17                // }
 18                ans++;
 19            }
 20        }
@@ -27,9 +27,9 @@
 26            if(map.get(arrivals[i])>m){
 27                map.put(arrivals[i], map.get(arrivals[i])-1);
 28                st.add(i);
-29                if(map.get(arrivals[i])==0){
-30                    map.remove(arrivals[i]);
-31                }
+29                // if(map.get(arrivals[i])==0){
+30                //     map.remove(arrivals[i]);
+31                // }
 32                ans++;
 33            }
 34
