@@ -1,4 +1,4 @@
-// Last updated: 12/12/2025, 8:26:05 PM
+// Last updated: 12/30/2025, 8:29:44 AM
 1class Solution {
 2    public int numMagicSquaresInside(int[][] grid) {
 3        if(grid.length<3 || grid[0].length<3){
