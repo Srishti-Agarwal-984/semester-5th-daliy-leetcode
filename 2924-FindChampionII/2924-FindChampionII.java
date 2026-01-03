@@ -1,4 +1,4 @@
-// Last updated: 1/3/2026, 1:55:17 PM
+// Last updated: 1/3/2026, 1:55:55 PM
 1class Solution {
 2    public int findChampion(int n, int[][] edges) {
 3        HashMap<Integer, HashSet<Integer>> map = new HashMap<>();
@@ -41,11 +41,14 @@
 40                if(vi.size()==n){
 41                    return i;
 42                }
-43            }
-44        }
-45        return -1;
-46
-47
-48        
-49    }
-50}
+43                else{
+44                    break;
+45                }
+46            }
+47        }
+48        return -1;
+49
+50
+51        
+52    }
+53}
