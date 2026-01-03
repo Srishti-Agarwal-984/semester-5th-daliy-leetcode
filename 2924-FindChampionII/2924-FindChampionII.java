@@ -1,4 +1,4 @@
-// Last updated: 1/3/2026, 1:55:55 PM
+// Last updated: 1/3/2026, 1:56:22 PM
 1class Solution {
 2    public int findChampion(int n, int[][] edges) {
 3        HashMap<Integer, HashSet<Integer>> map = new HashMap<>();
@@ -10,45 +10,34 @@
 9            map.get(e[0]).add(e[1]);
 10            in[e[1]]++;
 11        }
-12        int c=0;
-13        int r=-1;
-14        for(int i: in){
-15            if(i==0){
-16                c++;
-17            }
-18
-19        }
-20        if(c!=1){
-21            return -1;
-22        }
-23        for(int i=0; i<n; i++){
-24            if(in[i]==0){
-25                HashSet<Integer> vi = new HashSet<>();
-26                Queue<Integer> q = new LinkedList<>();
-27                q.add(i);
-28                while(!q.isEmpty()){
-29                    int ep = q.poll();
-30                    if(vi.contains(ep)){
-31                        continue;
-32                    }
-33                    vi.add(ep);
-34                    for(int nbrs : map.get(ep)){
-35                        if(!vi.contains(nbrs)){
-36                            q.add(nbrs);
-37                        }
-38                    }
-39                }
-40                if(vi.size()==n){
-41                    return i;
-42                }
-43                else{
-44                    break;
-45                }
-46            }
-47        }
-48        return -1;
-49
-50
-51        
-52    }
-53}
+12        for(int i=0; i<n; i++){
+13            if(in[i]==0){
+14                HashSet<Integer> vi = new HashSet<>();
+15                Queue<Integer> q = new LinkedList<>();
+16                q.add(i);
+17                while(!q.isEmpty()){
+18                    int ep = q.poll();
+19                    if(vi.contains(ep)){
+20                        continue;
+21                    }
+22                    vi.add(ep);
+23                    for(int nbrs : map.get(ep)){
+24                        if(!vi.contains(nbrs)){
+25                            q.add(nbrs);
+26                        }
+27                    }
+28                }
+29                if(vi.size()==n){
+30                    return i;
+31                }
+32                else{
+33                    break;
+34                }
+35            }
+36        }
+37        return -1;
+38
+39
+40        
+41    }
+42}
