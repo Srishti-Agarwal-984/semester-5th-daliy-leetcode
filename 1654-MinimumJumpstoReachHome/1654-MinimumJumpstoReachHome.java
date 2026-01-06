@@ -1,53 +1,34 @@
-// Last updated: 1/6/2026, 5:40:23 PM
-1import java.util.*;
-2
-3class Solution {
-4    public int minimumJumps(int[] forbidden, int a, int b, int x) {
-5
-6        // forbidden positions
-7        Set<Integer> ban = new HashSet<>();
-8        int maxForbidden = 0;
-9        for (int f : forbidden) {
-10            ban.add(f);
-11            maxForbidden = Math.max(maxForbidden, f);
-12        }
-13
-14        int limit = Math.max(x, maxForbidden) + a + b;
-15        boolean[][] visited = new boolean[limit + 1][2];
-16
-17        // Queue: {position, lastWasBackward(0/1), steps}
-18        Queue<int[]> q = new LinkedList<>();
-19        q.offer(new int[]{0, 0, 0});
-20        visited[0][0] = true;
-21
-22        while (!q.isEmpty()) {
-23            int[] cur = q.poll();
-24            int pos = cur[0];
-25            int lastBack = cur[1];
-26            int steps = cur[2];
-27
-28            if (pos == x) {
-29                return steps;
-30            }
-31
-32            // -------- forward jump --------
-33            int forward = pos + a;
-34            if (forward <= limit && !ban.contains(forward) && !visited[forward][0]) {
-35                visited[forward][0] = true;
-36                q.offer(new int[]{forward, 0, steps + 1});
-37            }
-38
-39            // -------- backward jump --------
-40            if (lastBack == 0) {
-41                int backward = pos - b;
-42                if (backward >= 0 && !ban.contains(backward) && !visited[backward][1]) {
-43                    visited[backward][1] = true;
-44                    q.offer(new int[]{backward, 1, steps + 1});
-45                }
-46            }
-47        }
-48
-49        return -1;
-50    }
-51}
-52
+// Last updated: 1/6/2026, 6:53:11 PM
+1class Solution {
+2    public int minimumJumps(int[] forbidden, int a, int b, int x) {
+3        HashSet<Integer> ban = new HashSet<>();
+4        int max = 0;
+5        for(int i: forbidden){
+6            max = Math.max(max, i);
+7            ban.add(i);
+8        }
+9        max = Math.max(max, x)+a+b;
+10        Queue<int[]> q = new LinkedList<>();
+11        q.offer(new int[]{0,0,0});
+12
+13        boolean[][] vi = new boolean[max+1][2];
+14        vi[0][0]=true;
+15        while(!q.isEmpty()){
+16            int[] o = q.poll();
+17            if(o[0]==x){
+18                return o[2];
+19            }
+20            if(a+o[0]<=max && !ban.contains(a+o[0]) && !vi[a+o[0]][0]){
+21                vi[a+o[0]][0]=true;
+22                q.offer(new int[]{a+o[0], 0, o[2]+1});
+23                
+24            }
+25            if(o[1]==0 && o[0]-b>=0&& !ban.contains(o[0]-b) && !vi[o[0]-b][1]){
+26                vi[o[0]-b][1]=true;
+27                q.offer(new int[]{o[0]-b, 1, o[2]+1 });
+28            }
+29        }
+30        return -1;
+31        
+32    }
+33}
