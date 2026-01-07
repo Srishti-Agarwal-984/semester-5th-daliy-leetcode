@@ -1,4 +1,4 @@
-// Last updated: 1/7/2026, 1:30:39 PM
+// Last updated: 1/7/2026, 1:31:19 PM
 1class Solution {
 2    public int largestOverlap(int[][] img1, int[][] img2) {
 3        int n = img1.length;
