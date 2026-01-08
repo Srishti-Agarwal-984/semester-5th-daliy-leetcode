@@ -1,4 +1,4 @@
-// Last updated: 1/7/2026, 2:02:08 PM
+// Last updated: 1/8/2026, 8:29:36 AM
 1class Solution {
 2    public int minimumDeviation(int[] nums) {
 3
