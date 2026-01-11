@@ -1,4 +1,4 @@
-// Last updated: 1/11/2026, 6:50:29 PM
+// Last updated: 1/11/2026, 7:10:26 PM
 1class Solution {
 2    public int closestMeetingNode(int[] edges, int node1, int node2) {
 3        HashMap<Integer, HashSet<Integer>> map = new HashMap<>();
