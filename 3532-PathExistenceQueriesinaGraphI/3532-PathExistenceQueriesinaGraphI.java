@@ -1,4 +1,4 @@
-// Last updated: 1/14/2026, 8:36:53 PM
+// Last updated: 1/14/2026, 10:27:38 PM
 1class Solution {
 2    public boolean[] pathExistenceQueries(int n, int[] nums, int maxDiff, int[][] queries) {
 3        int[] arr=new int[n];
