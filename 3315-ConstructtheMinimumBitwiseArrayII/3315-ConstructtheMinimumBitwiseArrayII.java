@@ -1,4 +1,4 @@
-// Last updated: 1/21/2026, 11:51:16 AM
+// Last updated: 1/21/2026, 11:51:37 AM
 1class Solution {
 2    public int[] minBitwiseArray(List<Integer> nums) {
 3        int[] ans = new int[nums.size()];
