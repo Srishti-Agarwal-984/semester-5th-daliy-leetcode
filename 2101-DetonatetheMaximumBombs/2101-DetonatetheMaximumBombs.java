@@ -1,54 +1,59 @@
-// Last updated: 1/24/2026, 9:14:01 PM
+// Last updated: 1/24/2026, 9:14:55 PM
 1class Solution {
 2
 3    public int maximumDetonation(int[][] bombs) {
-4        int n = bombs.length;
-5        List<List<Integer>> graph = new ArrayList<>();
+4
+5        HashMap<Integer, HashSet<Integer>> map = new HashMap<>();
 6
-7        for (int i = 0; i < n; i++) {
-8            graph.add(new ArrayList<>());
+7        for (int i = 0; i < bombs.length; i++) {
+8            map.put(i, new HashSet<>());
 9        }
 10
-11        // build directed graph
-12        for (int i = 0; i < n; i++) {
-13            for (int j = 0; j < n; j++) {
-14                if (i != j && canDetonate(bombs[i], bombs[j])) {
-15                    graph.get(i).add(j);
-16                }
-17            }
-18        }
-19
-20        int ans = 1;
-21
-22        // BFS from each bomb
-23        for (int i = 0; i < n; i++) {
-24            Queue<Integer> q = new LinkedList<>();
-25            boolean[] vis = new boolean[n];
-26            q.add(i);
-27            vis[i] = true;
-28            int count = 1;
-29
-30            while (!q.isEmpty()) {
-31                int cur = q.poll();
-32                for (int nei : graph.get(cur)) {
-33                    if (!vis[nei]) {
-34                        vis[nei] = true;
-35                        count++;
-36                        q.add(nei);
-37                    }
-38                }
-39            }
-40            ans = Math.max(ans, count);
-41        }
-42
-43        return ans;
-44    }
-45
-46    private boolean canDetonate(int[] a, int[] b) {
-47        long dx = a[0] - b[0];
-48        long dy = a[1] - b[1];
-49        long r = a[2];
-50        return dx * dx + dy * dy <= r * r;
-51    }
-52}
-53
+11        // build DIRECTED graph
+12        for (int i = 0; i < bombs.length; i++) {
+13            for (int j = 0; j < bombs.length; j++) {
+14                if (i == j) continue;
+15
+16                if (helper(
+17                        bombs[i][0], bombs[i][1], bombs[i][2],
+18                        bombs[j][0], bombs[j][1], bombs[j][2]
+19                )) {
+20                    map.get(i).add(j); // only i -> j
+21                }
+22            }
+23        }
+24
+25        int ans = 1;
+26
+27        for (int i = 0; i < bombs.length; i++) {
+28            HashSet<Integer> vi = new HashSet<>();
+29            Queue<Integer> q = new LinkedList<>();
+30            q.add(i);
+31
+32            while (!q.isEmpty()) {
+33                int r = q.poll();
+34                if (vi.contains(r)) continue;
+35
+36                vi.add(r);
+37
+38                for (int nbrs : map.get(r)) {
+39                    if (!vi.contains(nbrs)) {
+40                        q.add(nbrs);
+41                    }
+42                }
+43            }
+44
+45            ans = Math.max(ans, vi.size());
+46        }
+47
+48        return ans;
+49    }
+50
+51    // distance-based check
+52    public boolean helper(int x1, int y1, int r1, int x2, int y2, int r2) {
+53        long dx = x1 - x2;
+54        long dy = y1 - y2;
+55        return dx * dx + dy * dy <= (long) r1 * r1;
+56    }
+57}
+58
