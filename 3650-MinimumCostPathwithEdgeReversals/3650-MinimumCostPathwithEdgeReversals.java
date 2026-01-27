@@ -1,4 +1,4 @@
-// Last updated: 12/31/2025, 3:05:33 PM
+// Last updated: 1/27/2026, 6:20:02 AM
 1class Solution {
 2    public int minCost(int n, int[][] edges) {
 3        HashMap<Integer, HashMap<Integer, Integer>> map = new HashMap<>();
