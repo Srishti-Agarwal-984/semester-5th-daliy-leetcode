@@ -1,86 +1,102 @@
-// Last updated: 1/27/2026, 2:55:45 PM
+// Last updated: 1/27/2026, 3:08:47 PM
 1class Solution {
-2    public int[] sortItems(int n, int m, int[] group, List<List<Integer>> beforeItems) {
-3        for(int i = 0; i<n; i++){
-4            if(group[i] == -1){
-5                group[i] = m++;
-6            }
-7        }
-8
-9        HashMap<Integer,List<Integer>> map1 = new HashMap<>();
-10        HashMap<Integer,List<Integer>> map2 = new HashMap<>();
-11        for(int i = 0; i<n; i++){
-12            map1.put(i,new ArrayList<>());
+2
+3    public int[] sortItems(int n, int m, int[] group, List<List<Integer>> beforeItems) {
+4
+5        HashMap<Integer, List<Integer>> map1 = new HashMap<>();
+6        HashMap<Integer, List<Integer>> map2 = new HashMap<>();
+7
+8        // -1 groups ko unique group do
+9        for (int i = 0; i < group.length; i++) {
+10            if (group[i] == -1) {
+11                group[i] = m++;
+12            }
 13        }
-14        for(int i = 0; i<m; i++){
-15            map2.put(i,new ArrayList<>());
-16        }
-17
-18        for(int i = 0; i<n; i++){
-19            for(int j : beforeItems.get(i)){
-20                map1.get(j).add(i);
-21
-22                if(group[j] != group[i]){
-23                    map2.get(group[j]).add(group[i]);
-24                }
-25            }
-26        }
-27
-28        List<Integer> ll1 = toposort(map1);
-29        List<Integer> ll2 = toposort(map2);
-30
-31        if(ll1.size() == 0 || ll2.size() == 0){
-32            return new int[]{};
-33        }
-34
-35        HashMap<Integer,List<Integer>> buck = new HashMap<>();
-36
-37        for(int el : ll1){
-38            int idx = group[el];
-39            buck.putIfAbsent(idx,new ArrayList<>());
-40            buck.get(idx).add(el);
-41        }
+14
+15        // item graph
+16        for (int i = 0; i < n; i++) {
+17            map1.put(i, new ArrayList<>());
+18        }
+19
+20        // group graph
+21        for (int i = 0; i < m; i++) {
+22            map2.put(i, new ArrayList<>());
+23        }
+24
+25        // graphs build
+26        for (int i = 0; i < n; i++) {
+27            for (int j : beforeItems.get(i)) {
+28
+29                // FIX 1
+30                map1.get(j).add(i);
+31
+32                if (group[i] != group[j]) {
+33                    // FIX 2
+34                    map2.get(group[j]).add(group[i]);
+35                }
+36            }
+37        }
+38
+39        // FIX 3: helper -> toposort
+40        List<Integer> el = toposort(map1);
+41        List<Integer> g  = toposort(map2);
 42
-43        int[] ans = new int[n];
-44        int i = 0;
-45        for(int el : ll2){
-46            if(buck.containsKey(el)){
-47                // ans[i++] = buck.get(el);
-48                for(int key : buck.get(el)){
-49                    ans[i++] = key;
-50                }
-51            }
-52        }
-53        return ans;
-54    }
+43        if (el.size() == 0 || g.size() == 0) {
+44            return new int[]{};
+45        }
+46
+47        HashMap<Integer, List<Integer>> op = new HashMap<>();
+48        for (int i = 0; i < m; i++) {
+49            op.put(i, new ArrayList<>());
+50        }
+51
+52        for (int i : el) {
+53            op.get(group[i]).add(i);
+54        }
 55
-56    public List<Integer> toposort(HashMap<Integer,List<Integer>> map){
-57        int n = map.size();
-58        int[] indeg = new int[n];
-59        for(int i = 0; i<n;i++){
-60            for(int el : map.get(i)){
-61                indeg[el]++;
+56        int[] ans = new int[n];
+57        int r = 0;
+58
+59        for (int gr : g) {
+60            for (int qw : op.get(gr)) {
+61                ans[r++] = qw;
 62            }
 63        }
 64
-65        Queue<Integer> q = new LinkedList<>();
-66        for(int i = 0; i<n; i++){
-67            if(indeg[i] == 0){
-68                q.add(i);
-69            }
-70        }
-71
-72        List<Integer> ans = new ArrayList<>();
-73        while(!q.isEmpty()){
-74            int el = q.poll();
-75            ans.add(el);
-76            for(int nbrs : map.get(el)){
-77                indeg[nbrs]--;
-78                if(indeg[nbrs] == 0){
-79                    q.add(nbrs);
-80                }
-81            }
-82        }
-83        return ans.size() == map.size() ? ans : new ArrayList();
-84    }
-85}
+65        return ans;
+66    }
+67
+68    public List<Integer> toposort(HashMap<Integer, List<Integer>> map) {
+69
+70        int n = map.size();
+71        int[] indeg = new int[n];
+72
+73        for (int i = 0; i < n; i++) {
+74            for (int el : map.get(i)) {
+75                indeg[el]++;
+76            }
+77        }
+78
+79        Queue<Integer> q = new LinkedList<>();
+80        for (int i = 0; i < n; i++) {
+81            if (indeg[i] == 0) {
+82                q.add(i);
+83            }
+84        }
+85
+86        List<Integer> ans = new ArrayList<>();
+87        while (!q.isEmpty()) {
+88            int el = q.poll();
+89            ans.add(el);
+90            for (int nbrs : map.get(el)) {
+91                indeg[nbrs]--;
+92                if (indeg[nbrs] == 0) {
+93                    q.add(nbrs);
+94                }
+95            }
+96        }
+97
+98        return ans.size() == map.size() ? ans : new ArrayList<>();
+99    }
+100}
+101
