@@ -1,4 +1,4 @@
-// Last updated: 1/27/2026, 4:37:48 PM
+// Last updated: 1/27/2026, 4:38:00 PM
 1class Solution {
 2    public int timeRequiredToBuy(int[] tickets, int k) {
 3        int max=tickets[k];
