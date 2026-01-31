@@ -1,4 +1,4 @@
-// Last updated: 1/31/2026, 8:32:06 AM
+// Last updated: 1/31/2026, 8:32:24 AM
 1class Solution {
 2    public boolean canTransform(String start, String result) {
 3        if(start.length()==1){
